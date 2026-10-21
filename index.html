@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>360° Tour</title>
+</head>
+<body>
+  <div id="app">
+    <div id="viewer"></div>
+    <div id="hotspots"></div>
+
+    <div id="label"><span class="dot"></span><span id="label-text">—</span></div>
+    <div id="loader" aria-label="Loading"><div class="spin"></div></div>
+    <div id="toast" role="status"></div>
+
+    <div id="welcome" hidden>
+      <div class="card">
+        <h1 id="w-title"></h1>
+        <p id="w-text"></p>
+        <button id="w-add" type="button" class="primary">Add 360° photos</button>
+      </div>
+    </div>
+
+    <div id="lands" hidden>
+      <div class="card"><h1>Choose a land</h1><div id="lands-list"></div></div>
+    </div>
+
+    <aside id="editor" hidden>
+      <div class="ed-head"><strong>Editor</strong><button id="ed-preview" type="button">Preview</button></div>
+      <div class="proj">
+        <select id="proj-select" aria-label="Land / project"></select>
+        <div class="proj-btns">
+          <button id="proj-new" type="button">+ New land</button>
+          <button id="proj-rename" type="button" title="Rename this land">✎</button>
+          <button id="proj-del" type="button" title="Delete this land">✕</button>
+        </div>
+        <button id="proj-link" type="button">Copy link to this land</button>
+      </div>
+      <button id="ed-add" type="button" class="primary">+ Add photos</button>
+      <button id="ed-point" type="button">Add point</button>
+      <ul id="scenes"></ul>
+      <button id="ed-export" type="button">Export all lands (zip)</button>
+      <button id="ed-reset" type="button">Reset local data</button>
+    </aside>
+    <button id="edit-chip" type="button" hidden>Edit</button>
+
+    <div id="controls">
+      <button id="play" type="button"></button>
+      <span class="sep"></span>
+      <button id="zoom-out" type="button" aria-label="Zoom out">−</button>
+      <button id="zoom-in" type="button" aria-label="Zoom in">+</button>
+      <button id="home" type="button" hidden>Back to start</button>
+      <button id="alllands" type="button" hidden>All lands</button>
+    </div>
+
+    <div id="dialog" hidden>
+      <form id="hs-form" class="card">
+        <h2 id="dlg-title">New point</h2>
+        <label>Name shown on the picture<input id="hs-label" maxlength="40" autocomplete="off" /></label>
+        <label>Clicking it opens<select id="hs-target"></select></label>
+        <label class="check" id="hs-back-wrap"><input type="checkbox" id="hs-back" checked /> Also add a way back in that photo</label>
+        <div class="row">
+          <button type="button" id="hs-delete">Delete</button>
+          <button type="button" id="hs-go">Open view</button>
+          <span class="grow"></span>
+          <button type="button" id="hs-cancel">Cancel</button>
+          <button type="submit" class="primary">Save</button>
+        </div>
+      </form>
+    </div>
+    <input type="file" id="file" accept="image/*" multiple hidden />
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
